@@ -1,1 +1,8 @@
 c:\users\jward01\Documents\Visual Studio 2015\Projects\HFTStockTrader\HFTStockTrader\bin\Debug\HFTStockTrader.exe.config
+c:\users\jward01\Documents\Visual Studio 2015\Projects\HFTStockTrader\HFTStockTrader\obj\Debug\HFTStockTrader.csprojResolveAssemblyReference.cache
+c:\users\jward01\Documents\Visual Studio 2015\Projects\HFTStockTrader\HFTStockTrader\bin\Debug\HFTStockTrader.exe
+c:\users\jward01\Documents\Visual Studio 2015\Projects\HFTStockTrader\HFTStockTrader\bin\Debug\HFTStockTrader.pdb
+c:\users\jward01\Documents\Visual Studio 2015\Projects\HFTStockTrader\HFTStockTrader\bin\Debug\Newtonsoft.Json.dll
+c:\users\jward01\Documents\Visual Studio 2015\Projects\HFTStockTrader\HFTStockTrader\bin\Debug\Newtonsoft.Json.xml
+c:\users\jward01\Documents\Visual Studio 2015\Projects\HFTStockTrader\HFTStockTrader\obj\Debug\HFTStockTrader.exe
+c:\users\jward01\Documents\Visual Studio 2015\Projects\HFTStockTrader\HFTStockTrader\obj\Debug\HFTStockTrader.pdb
