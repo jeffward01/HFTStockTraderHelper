@@ -1,0 +1,1 @@
+c:\users\jward01\Documents\Visual Studio 2015\Projects\HFTStockTrader\HFTStockTrader\bin\Debug\HFTStockTrader.exe.config
