@@ -22,11 +22,11 @@ namespace HFTStockTrader
 
             StockServiceClass Service = new StockServiceClass();
 
-            Stock myStock = Service.getStockPrice(mySearchStock);
+            Service.getStockPrice(mySearchStock);
 
 
 
-            Console.WriteLine("Your asking price is: " + myStock.ask);
+            Console.ReadLine();
 
         }
         
