@@ -23,6 +23,19 @@ namespace HFTStockTrader
             StockServiceClass Service = new StockServiceClass();
 
             Service.getStockPrice(mySearchStock);
+            Service.SaveStockData();
+            Service.OutputStockData();
+            Console.WriteLine("Please press enter to enter Advisor Mode....");
+            Console.ReadLine();
+
+            //Timer
+            var timer = new System.Threading.Timer(
+             e => Service.TradeAdvisor(mySearchStock),
+                null,
+                TimeSpan.Zero,
+                TimeSpan.FromSeconds(3));
+
+
 
 
 
