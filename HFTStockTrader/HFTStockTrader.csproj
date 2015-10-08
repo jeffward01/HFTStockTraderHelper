@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Stock.cs" />
+    <Compile Include="Classes\StockComparsion.cs" />
     <Compile Include="Classes\StockServiceClass.cs" />
+    <Compile Include="Classes\TimerService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

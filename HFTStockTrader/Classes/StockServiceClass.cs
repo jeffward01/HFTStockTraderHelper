@@ -16,22 +16,86 @@ namespace HFTStockTrader.Classes
         public decimal price2;
 
         //Stock Properties
-        string mySymbol;
-        string myAsk;
-        string myBid;
-        string myLastTrade;
-        string myLow;
-        string myHigh;
-        string my52weekLow;
-        string my52weekHigh;
-        string myVolume;
-        string myOpen;
-        string myClose;
+        public string mySymbol;
+        public string myAsk;
+        public string myBid;
+        public string myLastTrade;
+        public string myLow;
+        public string myHigh;
+        public string my52weekLow;
+        public string my52weekHigh;
+        public string myVolume;
+        public string myOpen;
+        public string myClose;
 
+        
 
         //Methods
-        public void getStockPrice(string SearchString)
+        public decimal getNumberOfStocks(string message, bool isPostive = true, bool NonZero = true)
         {
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine(message);
+
+                    string input = Console.ReadLine();
+
+                    decimal returnValue = decimal.Parse(input);
+
+                    if (isPostive == true && returnValue < 0)
+                    {
+                        Console.WriteLine("Please enter a positive number");
+
+                        continue;
+                    }
+                    if (NonZero == false && returnValue == 0)
+                    {
+                        Console.WriteLine("Please enter a number other than 0");
+
+                        continue;
+                    }
+
+                    if ((returnValue * 2 > Decimal.MaxValue) || (returnValue * 3 > Decimal.MaxValue))
+                    {
+                        Console.WriteLine("---------------- \n \n");
+                        Console.WriteLine("Please enter a smaller number, dont be a hacker...");
+                        continue;
+                    }
+                    return returnValue;
+                }
+                catch (ArgumentNullException e)
+                {
+                 
+                    Console.WriteLine("Please enter a value");
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("Please enter a numerical value");
+                }
+                catch (OverflowException e)
+                {
+                    Console.WriteLine("Please enter a reasonably sized number");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("There was an error reading this decimal");
+                }
+            }
+
+
+
+        }
+
+        public Stock getStockInformation(string SearchString)
+        {
+            if(SearchString == null || SearchString == "" )
+            {
+                Console.WriteLine("Please enter a a Proper Stock Symbol... Press Enter to return..");
+                Console.ReadLine();
+                return null;
+            }
+
             //Call the API
             using (WebClient webClient = new WebClient())
             {
@@ -67,7 +131,10 @@ namespace HFTStockTrader.Classes
                 myVolume = stock.volume;
                 myOpen = stock.open;
                 myClose = stock.close;
-      
+                
+
+
+                return stock;
             }
         }
         public void SaveStockData()
@@ -76,21 +143,22 @@ namespace HFTStockTrader.Classes
         }
 
 
-        public void OutputStockData()
+        public void OutputStockData(Stock myStock)
         {
 
-            Console.WriteLine("\n \n Your Symbol is: " + mySymbol);
-            Console.WriteLine(mySymbol + " asking price is $" + myAsk);
-            Console.WriteLine("The last Bid is: $" + myBid + Environment.NewLine);
-            Console.WriteLine("The Daily High for {2} is: ${0} and the daily low for {2} is: ${1} " + Environment.NewLine, myHigh, myLow, mySymbol);
-            Console.WriteLine("The 52 Week High is: ${0} and the 52 Week Low is: ${1}", my52weekHigh, my52weekLow);
-            Console.WriteLine("The Volume of {0} is {1}" + Environment.NewLine, mySymbol, myVolume);
+            Console.WriteLine("\n \n Your Symbol is: " + myStock.symbol);
+            Console.WriteLine(myStock.symbol + " asking price is $" + myStock.ask);
+            Console.WriteLine("The last Bid is: $" + myStock.bid + Environment.NewLine);
+            Console.WriteLine("The Daily High for {2} is: ${0} and the daily low for {2} is: ${1} " + Environment.NewLine, myStock.high, myStock.low, myStock.symbol);
+            Console.WriteLine("The 52 Week High is: ${0} and the 52 Week Low is: ${1}", myStock.high_52_weeks, myStock.low_52_weeks);
+            Console.WriteLine("The Volume of {0} is {1}" + Environment.NewLine, myStock.symbol, myStock.volume);
+            Console.WriteLine("\n \n ------ \n ");
         }
 
         public void TradeAdvisor(string OriginalSearch)
         {
             Console.Clear();
-            getStockPrice(OriginalSearch);
+            getStockInformation(OriginalSearch);
             price2 = Decimal.Parse(myAsk);
 
             if(price1 > price2)
